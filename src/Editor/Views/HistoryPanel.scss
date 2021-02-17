@@ -1,0 +1,22 @@
+.history-panel {
+	&__undo {
+		display: inline-block;
+		margin-right: 10px;
+		pointer-events: none;
+		color: gray;
+		&_enabled {
+			color: black;
+			pointer-events: all;
+		}
+	}
+
+	&__redo {
+		display: inline-block;
+		pointer-events: none;
+		color: gray;
+		&_enabled {
+			color: black;
+			pointer-events: all;
+		}
+	}
+}

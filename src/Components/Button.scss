@@ -1,0 +1,43 @@
+.button {
+	text-align: center;
+	cursor: pointer;
+	user-select: none;
+}
+
+.button_theme_default {
+	background: rgba(255, 255, 255, 0.8);
+	color: black;
+	border-radius: 3px;
+	border: 1px solid rgba(215, 215, 214, 0.5);
+	box-shadow: 0px 2px 15px rgba(78, 78, 78, 0.1);
+	transition: 0.1s;
+	&:hover,
+	&:focus {
+		background: #edeef0;
+	}
+	&:active,
+	&.button_active {
+		background: #6c0fd9;
+		border-color: #6c0fd9;
+		color: white;
+		border-radius: 4px;
+	}
+}
+
+.button_size_m {
+	padding: 0 8.5px;
+	height: 40px;
+	line-height: 40px;
+	svg {
+		margin-top: 11px;
+	}
+}
+
+.button_size_b {
+	padding: 0 11.5px;
+	height: 50px;
+	line-height: 50px;
+	svg {
+		margin-top: 12px;
+	}
+}

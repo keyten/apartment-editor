@@ -1,0 +1,47 @@
+:root {
+	//Colors
+	--color-white: #ffffff;
+	--color-black: #000000;
+	--color-gray-dark: #969696;
+	--color-gray-dark-v2: #818181;
+	--color-gray-dark-v3: #515a67;
+	--color-gray: #c4c4c4;
+	--color-gray-light: #e9eaee;
+	--color-gray-light-v2: #fbfbfb;
+	--color-lilac: #6c0fd9;
+	--color-green-light: #88c88b;
+	--color-red: #c96969;
+
+	// Colors Button
+	--color-button-border: #d5d5d6;
+	--color-button-background: rgba(255, 255, 255, 0.8);
+	--color-button-background-hover: #edeef0;
+	--color-button-background-active: #6c0fd9;
+	--color-black-shadow: rgba(78, 78, 78, 0.1);
+	--color-button-icon-fill: #1d1d1b;
+	--color-button-active-icon-fill: #ffffff;
+
+	--color-action-button-background-lilac: #6c0fd9;
+	--color-action-button-background-lilac-hover: #994df0;
+	--color-action-button-background-lilac-active: #ab6ff0;
+
+	--color-bg-view: #e9eaee;
+
+	//FontSize
+	--fs-large: 18px;
+	--fs-normal: 16px;
+	--fs-small: 14px;
+	--fs-tiny: 11px;
+
+	//FontLineHeight
+
+	--lh-small: 17px;
+
+	// Font weight
+	--fw-heavy: 700;
+	--fw-bold: 600;
+	--fw-normal: 400;
+	--fw-tiny: 100;
+
+	--aside-width: 375px;
+}

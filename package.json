@@ -1,0 +1,65 @@
+{
+	"name": "cd-client",
+	"version": "0.1.0",
+	"private": true,
+	"homepage": "/editor",
+	"dependencies": {
+		"@types/jest": "24.0.20",
+		"@types/node": "12.11.7",
+		"@types/react": "16.9.11",
+		"@types/react-dom": "16.9.3",
+		"@types/react-router-dom": "^5.1.0",
+		"axios": "^0.19.1",
+		"classnames": "^2.2.6",
+		"mobx": "^5.14.2",
+		"mobx-react": "^6.1.4",
+		"mobx-react-devtools": "^6.1.1",
+		"node-sass": "^4.14.1",
+		"openseadragon": "^2.4.1",
+		"react": "^16.11.0",
+		"react-dom": "^16.11.0",
+		"react-router-dom": "^5.1.2",
+		"react-scripts": "^3.3.1",
+		"save": "^2.4.0",
+		"three": "^0.110.0",
+		"three-js-csg": "^72.0.0",
+		"threejs-meshline": "^2.0.9",
+		"typescript": "3.7.5"
+	},
+	"scripts": {
+		"start": "cross-env REACT_APP_API_ROOT=https://stage-api.plannerix.com/api/v1 react-scripts start",
+		"build": "react-scripts build",
+		"test": "react-scripts test",
+		"eject": "react-scripts eject",
+		"install": "npm install",
+		"pretty": "npx prettier --write src"
+	},
+	"eslintConfig": {
+		"extends": "react-app"
+	},
+	"husky": {
+		"hooks": {
+			"pre-commit": "pretty-quick --staged"
+		}
+	},
+	"browserslist": {
+		"production": [
+			">0.2%",
+			"not dead",
+			"not op_mini all"
+		],
+		"development": [
+			"last 1 chrome version",
+			"last 1 firefox version",
+			"last 1 safari version"
+		]
+	},
+	"devDependencies": {
+		"@types/axios": "^0.14.0",
+		"@types/classnames": "^2.2.9",
+		"cross-env": "^7.0.2",
+		"husky": "^4.2.5",
+		"prettier": "2.0.5",
+		"pretty-quick": "^2.0.1"
+	}
+}

@@ -1,0 +1,106 @@
+body,
+html {
+	height: 100%;
+	width: 100%;
+	font-size: 13px;
+	line-height: 1.3;
+	font-weight: 400;
+	text-size-adjust: none;
+	font-size-adjust: none;
+	min-width: 320px;
+
+	-webkit-overflow-scrolling: touch;
+	-ms-overflow-style: ms-autohiding-scrollbar;
+
+	text-rendering: optimizeLegibility;
+	-moz-osx-font-smoothing: grayscale;
+	-webkit-font-smoothing: antialiased;
+	font-smoothing: antialiased;
+}
+
+@-moz-document url-prefix() {
+	& {
+		font-weight: lighter !important;
+	}
+}
+
+//
+
+body {
+	margin: 0;
+	padding: 0;
+	text-align: left;
+	overflow-x: hidden;
+}
+
+body,
+button,
+form,
+html,
+input,
+pre,
+select,
+textarea {
+	font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+	font-weight: 300;
+}
+
+code,
+kbd {
+	font-family: monospace !important;
+}
+
+html {
+	box-sizing: border-box;
+}
+
+* {
+	box-sizing: inherit;
+	transition-duration: 150ms;
+	transition-timing-function: ease-out;
+	transition-property: none;
+}
+
+a,
+a:visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+*[data-href],
+*[onclick],
+.clickable,
+a {
+	&.bordered-link {
+		text-decoration: none;
+		border-bottom: 1px solid;
+	}
+}
+
+.decoration-none {
+	text-decoration: none;
+}
+
+a.itemlink {
+	display: block;
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	top: 0;
+	left: 0;
+	z-index: 500;
+	font-size: 0;
+}
+
+a[href^='tel:'],
+a[href^='mailto:'] {
+	text-decoration: none !important;
+}
+
+ol,
+ul,
+li {
+	padding: 0;
+	margin: 0;
+	list-style: none;
+}

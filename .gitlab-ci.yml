@@ -1,0 +1,80 @@
+stages:
+  - build
+  - deploy
+
+variables:
+  DOCKER_DRIVER: overlay2
+  DOCKER_TLS_CERTDIR: ""
+
+.build_aws:
+  stage: build
+  services:
+    - docker:19.03.5-dind
+  image: docker:19.03
+  before_script:
+    - apk add --update --no-cache curl py-pip
+    - pip install awscli
+    - $(aws ecr get-login --no-include-email --region eu-central-1)
+  script:
+    - echo "Building builder"
+    - docker pull $REPOSITORY_URL:builder || true
+    - docker build --pull --cache-from $REPOSITORY_URL:builder --target builder
+      --build-arg NODE_ENV=$NODE_ENV --build-arg REACT_APP_API_ROOT=$REACT_APP_API_ROOT -t $REPOSITORY_URL:builder .
+    - echo "Building static app"
+    - docker build --pull --cache-from $REPOSITORY_URL:builder --cache-from $REPOSITORY_URL:latest
+      --build-arg NODE_ENV=$NODE_ENV --build-arg REACT_APP_API_ROOT=$REACT_APP_API_ROOT -t $REPOSITORY_URL:latest .
+    - docker push $REPOSITORY_URL:builder
+    - docker push $REPOSITORY_URL:latest
+  tags:
+    - docker
+
+build_stage:
+  extends: .build_aws
+  only:
+    - developer
+    - deploy
+  variables:
+    REPOSITORY_URL: 609486298793.dkr.ecr.eu-central-1.amazonaws.com/editor-stag
+    NODE_ENV: stage
+    REACT_APP_API_ROOT: https://stage-api.plannerix.com/api/v1
+
+build_prod:
+  extends: .build_aws
+  only:
+    - master
+  variables:
+    REPOSITORY_URL: 609486298793.dkr.ecr.eu-central-1.amazonaws.com/editor-prod
+    NODE_ENV: production
+    REACT_APP_API_ROOT: https://api.plannerix.com/api/v1
+
+.deploy_aws:
+  stage: deploy
+  services:
+    - docker:19.03.0-dind
+  image: docker:19.03
+  before_script:
+    - apk add --update --no-cache curl py-pip
+    - pip install awscli
+    - $(aws ecr get-login --no-include-email --region eu-central-1)
+  script:
+    - aws ecs update-service --force-new-deployment --service $EDITOR_NAME
+      --task-definition $EDITOR_NAME --cluster $CLUSTER_NAME
+  tags:
+    - docker
+
+deploy_stag:
+  extends: .deploy_aws
+  only:
+    - developer
+  variables:
+    CLUSTER_NAME: project-stag
+    EDITOR_NAME: editor-stag
+
+deploy_prod:
+  extends: .deploy_aws
+  only:
+    - master
+  when: manual
+  variables:
+    CLUSTER_NAME: project-prod
+    EDITOR_NAME: editor-prod
